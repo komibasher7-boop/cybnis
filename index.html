@@ -3,33 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CYBNIS.COM | Neural Asset 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <title>CYBNIS | Future of Cyber Security</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #00f2ff; --bg: #000; }
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: var(--bg); overflow: hidden; font-family: 'Orbitron', sans-serif; }
-        canvas { position: absolute; top: 0; left: 0; z-index: 1; opacity: 0.3; }
-        .ui-layer { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; background: radial-gradient(circle, rgba(0,242,255,0.05) 0%, transparent 70%); }
-        .glitch { font-size: 4rem; font-weight: bold; text-transform: uppercase; position: relative; text-shadow: 0.05em 0 0 rgba(255,0,0,0.75), -0.025em -0.05em 0 rgba(0,255,0,0.75), 0.025em 0.05em 0 rgba(0,0,255,0.75); animation: glitch 500ms infinite; }
-        @keyframes glitch { 0% { text-shadow: 0.05em 0 0 rgba(255,0,0,0.75), -0.05em -0.025em 0 rgba(0,255,0,0.75), -0.025em 0.05em 0 rgba(0,0,255,0.75); } 15% { text-shadow: -0.05em -0.025em 0 rgba(255,0,0,0.75), 0.025em 0.025em 0 rgba(0,255,0,0.75), -0.05em -0.05em 0 rgba(0,0,255,0.75); } 50% { text-shadow: 0.025em 0.05em 0 rgba(255,0,0,0.75), 0.05em 0 0 rgba(0,255,0,0.75), 0 -0.05em 0 rgba(0,0,255,0.75); } 100% { text-shadow: -0.025em 0 0 rgba(255,0,0,0.75), -0.025em -0.025em 0 rgba(0,255,0,0.75), -0.025em -0.05em 0 rgba(0,0,255,0.75); } }
-        p { font-family: 'Roboto Mono', monospace; color: var(--primary); font-size: 0.9rem; letter-spacing: 5px; margin-bottom: 2.5rem; text-shadow: 0 0 10px var(--primary); }
-        .btn { padding: 15px 40px; border: 2px solid var(--primary); color: var(--primary); text-decoration: none; font-weight: bold; border-radius: 5px; transition: 0.5s; }
-        .btn:hover { background: var(--primary); color: black; box-shadow: 0 0 30px var(--primary); }
+        body, html { margin: 0; padding: 0; background: var(--bg); overflow: hidden; font-family: 'Orbitron', sans-serif; height: 100%; }
+        canvas { position: absolute; top: 0; left: 0; z-index: 1; opacity: 0.2; }
+        
+        .ui-container { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; color: white; }
+        
+        /* Neural Shield Logo CSS */
+        .logo-container { width: 120px; height: 120px; margin-bottom: 20px; position: relative; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        
+        .shield { fill: none; stroke: var(--primary); stroke-width: 2; stroke-dasharray: 300; animation: draw 4s linear infinite; }
+        @keyframes draw { 0% { stroke-dashoffset: 300; } 100% { stroke-dashoffset: 0; } }
+
+        h1 { font-size: 4rem; letter-spacing: 15px; margin: 0; background: linear-gradient(to bottom, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 10px var(--primary)); }
+        p { color: var(--primary); letter-spacing: 5px; font-size: 0.8rem; margin-top: 10px; opacity: 0.8; }
+        
+        .btn-box { margin-top: 50px; }
+        .btn { padding: 15px 40px; border: 1px solid var(--primary); color: var(--primary); text-decoration: none; font-size: 0.9rem; font-weight: bold; transition: 0.4s; position: relative; overflow: hidden; }
+        .btn:hover { background: var(--primary); color: #000; box-shadow: 0 0 40px var(--primary); }
     </style>
 </head>
 <body>
     <canvas id="matrix"></canvas>
-    <div class="ui-layer">
-        <div class="glitch">CYBNIS.COM</div>
-        <p>SECURE PROTOCOL ACTIVATED</p>
-        <a href="https://www.afternic.com/domain/cybnis.com" class="btn">MAKE AN OFFER</a>
+    
+    <div class="ui-container">
+        <!-- SVG Neural Logo -->
+        <div class="logo-container">
+            <svg viewBox="0 0 100 100">
+                <path class="shield" d="M50 5 L10 25 V50 C10 75 50 95 50 95 C50 95 90 75 90 50 V25 L50 5Z" />
+                <circle cx="50" cy="45" r="10" fill="#00f2ff" opacity="0.5">
+                    <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite" />
+                </circle>
+            </svg>
+        </div>
+
+        <h1>CYBNIS</h1>
+        <p>NEURAL INFRASTRUCTURE NODE</p>
+
+        <div class="btn-box">
+            <a href="https://www.afternic.com/domain/cybnis.com" class="btn">ACQUIRE ASSET</a>
+        </div>
     </div>
+
     <script>
         const canvas = document.getElementById('matrix');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*";
-        const fontSize = 16;
+        const letters = "01";
+        const fontSize = 14;
         const columns = canvas.width / fontSize;
         const drops = Array(Math.floor(columns)).fill(1);
         function draw() {
@@ -42,7 +67,7 @@
                 drops[i]++;
             }
         }
-        setInterval(draw, 33);
+        setInterval(draw, 35);
     </script>
 </body>
 </html>
