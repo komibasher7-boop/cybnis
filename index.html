@@ -2,27 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ORYPHONIX | High-Altitude Digital Asset</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <title>LYTREN | Efficiency Redefined</title>
     <style>
-        :root { --gold: #d4af37; --bg: #050505; }
-        body { margin: 0; background: var(--bg); color: white; font-family: 'Cinzel', serif; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
-        .glow { position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%); }
-        .container { z-index: 2; text-align: center; }
-        h1 { font-size: clamp(2rem, 10vw, 5rem); letter-spacing: 15px; margin: 0; color: var(--gold); text-shadow: 0 0 30px rgba(212,175,55,0.3); }
-        p { font-family: 'Roboto Mono', monospace; letter-spacing: 5px; font-size: 0.7rem; color: #666; margin-top: 10px; }
-        .btn { margin-top: 40px; display: inline-block; padding: 15px 45px; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-weight: bold; transition: 0.5s; }
-        .btn:hover { background: var(--gold); color: black; box-shadow: 0 0 50px var(--gold); }
-        .badge { margin-top: 50px; padding: 10px 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(212,175,55,0.1); border-radius: 5px; font-family: 'Roboto Mono'; font-size: 0.6rem; color: #444; }
+        body { margin: 0; background: #fff; color: #000; font-family: -apple-system, sans-serif; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .pulse { position: absolute; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, #007bff, transparent); animation: slide 3s infinite; }
+        @keyframes slide { 0% { transform: translateY(-50vh); } 100% { transform: translateY(50vh); } }
+        .content { text-align: center; z-index: 2; }
+        h1 { font-size: clamp(3rem, 12vw, 6rem); font-weight: 900; letter-spacing: -3px; margin: 0; }
+        p { color: #007bff; font-weight: bold; letter-spacing: 3px; font-size: 0.8rem; }
+        .btn { margin-top: 30px; display: inline-block; padding: 18px 50px; background: #000; color: #fff; text-decoration: none; border-radius: 100px; font-weight: bold; transition: 0.3s; }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
-    <div class="glow"></div>
-    <div class="container">
-        <h1>ORYPHONIX</h1>
-        <p>PREMIUM AEROSPACE & DEFENSE INFRASTRUCTURE</p>
-        <a href="https://www.afternic.com/domain/oryphonix.com" class="btn">ACQUIRE ASSET</a>
-        <div class="badge">SECURED VIA ESCROW PROTOCOL | ASSET ID: ORY-2026</div>
+    <div class="pulse"></div>
+    <div class="content">
+        <h1>LYTREN</h1>
+        <p>FINTECH & ENERGY SOLUTIONS</p>
+        <a href="https://www.afternic.com/domain/lytren.com" class="btn">SECURE NODE</a>
     </div>
 </body>
 </html>
