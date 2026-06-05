@@ -1,24 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RIWEP | Unified Cloud Asset</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBNIS | Future of Cyber Security</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; background: #0f0c29; color: white; font-family: 'Segoe UI', sans-serif; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .orb { position: absolute; width: 400px; height: 400px; background: linear-gradient(45deg, #ff00cc, #3333ff); filter: blur(80px); border-radius: 50%; opacity: 0.2; animation: move 10s infinite alternate; }
-        @keyframes move { from { transform: translate(-100px, -100px); } to { transform: translate(100px, 100px); } }
-        .content { text-align: center; z-index: 2; backdrop-filter: blur(10px); padding: 50px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.1); }
-        h1 { font-size: 4rem; margin: 0; letter-spacing: 10px; }
-        p { opacity: 0.5; margin-bottom: 40px; letter-spacing: 2px; }
-        .btn { padding: 15px 40px; background: linear-gradient(to right, #ff00cc, #3333ff); border-radius: 10px; color: white; text-decoration: none; font-weight: bold; }
+        :root { --primary: #00f2ff; --bg: #000; }
+        body, html { margin: 0; padding: 0; background: var(--bg); overflow-x: hidden; font-family: 'Orbitron', sans-serif; height: 100%; }
+        canvas { position: absolute; top: 0; left: 0; z-index: 1; opacity: 0.2; }
+        
+        .ui-container { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; color: white; padding: 20px; }
+        
+        .logo-container { width: 100px; height: 100px; margin-bottom: 20px; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .shield { fill: none; stroke: var(--primary); stroke-width: 2; stroke-dasharray: 300; animation: draw 4s linear infinite; }
+        @keyframes draw { 0% { stroke-dashoffset: 300; } 100% { stroke-dashoffset: 0; } }
+
+        h1 { font-size: clamp(2rem, 8vw, 4rem); letter-spacing: 10px; margin: 0; background: linear-gradient(to bottom, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 10px var(--primary)); }
+        p.subtitle { color: var(--primary); letter-spacing: 5px; font-size: 0.7rem; margin-top: 10px; opacity: 0.8; font-family: 'Roboto Mono', monospace; }
+        
+        .btn-box { margin-top: 40px; }
+        .btn { padding: 15px 40px; border: 1px solid var(--primary); color: var(--primary); text-decoration: none; font-size: 0.8rem; font-weight: bold; transition: 0.4s; box-shadow: 0 0 15px rgba(0,242,255,0.2); }
+        .btn:hover { background: var(--primary); color: #000; box-shadow: 0 0 40px var(--primary); }
+
+        /* Trust Certificate Style */
+        .trust-badge {
+            margin-top: 60px;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            max-width: 350px;
+        }
+        .cert-icon { color: var(--primary); font-size: 1.5rem; }
+        .cert-text { text-align: left; font-family: 'Roboto Mono', monospace; font-size: 0.65rem; color: #888; }
+        .cert-text b { color: var(--primary); display: block; margin-bottom: 3px; font-family: 'Orbitron'; }
     </style>
 </head>
 <body>
-    <div class="orb"></div>
-    <div class="content">
-        <h1>RIWEP</h1>
-        <p>MODERN WEB ARCHITECTURE</p>
-        <a href="https://www.afternic.com/domain/riwep.com" class="btn">ACQUIRE DOMAIN</a>
+    <canvas id="matrix"></canvas>
+    
+    <div class="ui-container">
+        <div class="logo-container">
+            <svg viewBox="0 0 100 100"><path class="shield" d="M50 5 L10 25 V50 C10 75 50 95 50 95 C50 95 90 75 90 50 V25 L50 5Z" /></svg>
+        </div>
+
+        <h1>CYBNIS</h1>
+        <p class="subtitle">ENCRYPTED DIGITAL ASSET NODE</p>
+
+        <div class="btn-box">
+            <a href="https://www.afternic.com/domain/cybnis.com" class="btn">ACQUIRE ASSET</a>
+        </div>
+
+        <!-- Digital Trust Anchor -->
+        <div class="trust-badge">
+            <div class="cert-icon">🔒</div>
+            <div class="cert-text">
+                <b>VERIFIED OWNERSHIP</b>
+                Asset ID: CYB-2026-LINK-77<br>
+                Status: Secured via Escrow Protocol<br>
+                Transfer Availability: Instant
+            </div>
+        </div>
     </div>
+
+    <script>
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        const letters = "01";
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#00f2ff"; ctx.font = fontSize + "px monospace";
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(draw, 35);
+    </script>
 </body>
 </html>
